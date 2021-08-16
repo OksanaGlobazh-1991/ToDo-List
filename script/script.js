@@ -41,14 +41,18 @@ let todoControl = document.querySelector('.todo-control'),
                 item.completed = !item.completed;
                 render();
             })
-           const btnTodoRemove = li.querySelector('.todo-remove');
-           btnTodoRemove.addEventListener('click', function(){
-                li.remove();
-
-           })
-        });
+            const btnTodoRemove = li.querySelector('.todo-remove');
+                  btnTodoRemove.addEventListener('click', function(){
+                    // todoData.forEach(function(li, i){
+                    todoData.splice(0, 1);
+                    localStorage.removeItem(li);
+                    render();
+              })
+           
+        })
+    
         localStorage.setItem("todoData", JSON.stringify(todoData));
-    };
+      };
 
     todoControl.addEventListener('submit', function(event){
         event.preventDefault(); //странииа не перегружается теперь
